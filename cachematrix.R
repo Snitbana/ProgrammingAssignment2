@@ -5,7 +5,6 @@
 ## stores a matrix and caches its inverse.
 
 ## This function makes a special "matrix" object that can cache its inverse.
-
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
   set <- function(y) {
@@ -20,11 +19,9 @@ makeCacheMatrix <- function(x = matrix()) {
        setInverse = setInverse,
        getInverse = getInverse)
 }
-
 ## This function computes the inverse of the special "matrix" made by 
 ## makeCacheMatrix above. If the inverse has already been computed (and the 
 ## matrix has not changed), then it should retrieve the inverse from the cache.
-
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   inv <- x$getInverse()
@@ -37,4 +34,16 @@ cacheSolve <- function(x, ...) {
   x$setInverse(inv)
   inv
 }
+## Testing of my function
+## Dear reviewr: After copying and pasting my fuction, 
+##you can ckeck its functionality by running the below 
+## seven commands
+##source("ProgrammingAssignment2/cachematrix.R")
+my_matrix <- makeCacheMatrix(matrix(1:4, 2, 2))
+ my_matrix$get()
+my_matrix$getInverse()
+my_matrix$getInverse()
+cacheSolve(my_matrix)
+cacheSolve(my_matrix)
+my_matrix$getInverse()
 
